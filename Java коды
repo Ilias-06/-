@@ -1,0 +1,71 @@
+import java.util.*;
+
+public class SortingVisualization {
+
+    // Массивті шығару
+    public static void printArray(int[] arr) {
+        System.out.println(Arrays.toString(arr));
+    }
+
+    // Bubble Sort
+    public static void bubbleSort(int[] arr) {
+        System.out.println("\n=== Bubble Sort ===");
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            System.out.println("Қадам " + (i + 1) + ":");
+            for (int j = 0; j < n - i - 1; j++) {
+
+                System.out.print("Салыстыру: " + arr[j] + " және " + arr[j + 1]);
+
+                if (arr[j] > arr[j + 1]) {
+                    // swap
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                    System.out.print(" → ауыстырылды");
+                }
+
+                System.out.println();
+                printArray(arr);
+            }
+            System.out.println();
+        }
+    }
+
+    // Selection Sort
+    public static void selectionSort(int[] arr) {
+        System.out.println("\n=== Selection Sort ===");
+        int n = arr.length;
+
+        for (int i = 0; i < n - 1; i++) {
+            int minIndex = i;
+
+            for (int j = i + 1; j < n; j++) {
+                if (arr[j] < arr[minIndex]) {
+                    minIndex = j;
+                }
+            }
+
+            // swap
+            int temp = arr[minIndex];
+            arr[minIndex] = arr[i];
+            arr[i] = temp;
+
+            System.out.print("Қадам " + (i + 1) + ": ");
+            printArray(arr);
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int[] array1 = {5, 2, 9, 1, 5, 6};
+        int[] array2 = array1.clone();
+
+        System.out.println("Бастапқы массив:");
+        printArray(array1);
+
+        bubbleSort(array1);
+        selectionSort(array2);
+    }
+}
